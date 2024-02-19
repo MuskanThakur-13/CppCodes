@@ -13,7 +13,8 @@
 
 // String does not contain any leading or trailing spaces.
 
-
+#include<iostream>
+using namespace std;
 int length(char input[]){
     int count=0;
     for(int i=0;input[i] != '\0';i++){
@@ -48,4 +49,71 @@ void reverseEachWord(char input[]) {
     }
     k=len-1;
     reverse(input,l,k);
+}
+
+
+//*************************************Method1**************************
+// void reverseEachWord(char input[]) {
+//     int len=strlen(input);
+//     int ptrA=0;
+//     int ptrB=0;
+//     int i=0;
+//     while(true){
+//         if(input[i] == ' '|| input[i] =='\0' ){
+//             ptrB=i-1;
+//             while(ptrA<=ptrB){
+//                 char temp=input[ptrA];
+//                 input[ptrA]=input[ptrB];
+//                 input[ptrB]=temp;
+//                 ptrA++;
+//                 ptrB--;
+//             }
+//             ptrA=i+1;  
+//         }
+//         if(input[i]=='\0'){
+//             break;
+//         }
+//         i++;
+//     }
+    
+    
+// }
+
+
+// *********************************************Method 2***************************
+// void reverseEachWord(char input[]) {
+//     int len=strlen(input);
+//     int ptrA=0;
+//     int ptrB=0;
+//     for(int i=0;i<len;i++){
+//         if(input[i] == ' ' ){
+//             ptrB=i-1;
+//             while(ptrA<=ptrB){
+//                 char temp=input[ptrA];
+//                 input[ptrA]=input[ptrB];
+//                 input[ptrB]=temp;
+//                 ptrA++;
+//                 ptrB--;
+//             }
+//             ptrA=i+1;  
+//         }
+//     }
+    
+//     ptrB=len-1;
+//     while(ptrA<=ptrB){
+//                 char temp=input[ptrA];
+//                 input[ptrA]=input[ptrB];
+//                 input[ptrB]=temp;
+//                 ptrA++;
+//                 ptrB--;
+//     }
+    
+// }
+
+int main() {
+    int size = 1e6;
+    char str[size];
+    cin.getline(str, size);
+    reverseEachWord(str);
+    cout << str;
 }

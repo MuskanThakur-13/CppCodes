@@ -15,23 +15,35 @@ using namespace std;
 
 char highestOccurringChar(char input[]) {
     int len=strlen(input);
-    sort(input,input+len);
-
+    int maxfreq=0;
     int chrfreq[26]={0};
 
     for(int i=0;i<len;i++){
         int index=input[i]-'a';
         chrfreq[index]++;
+        maxfreq=max(maxfreq,chrfreq[index]);
     }
 
-    int max=0;
-    int index=0;
-    for(int i=0;i<26;i++){
-        if(chrfreq[i]>max){
-            max=chrfreq[i];
-            index=i;
+    for(int i=0;i<len;i++){
+        int index=input[i]-'a';
+        if(chrfreq[index] == maxfreq){
+           return input[i];
         }
     }
-    char ch=index + 97;
-    return ch;
 }
+
+// char highestOccurringChar(char input[]) {
+//     int arr[128]={0};
+//     int maxFreq=0;
+//     int len=strlen(input);
+
+//     for(int i=0;i<len;i++){
+//         arr[input[i]]++;
+//         maxFreq=max(maxFreq,arr[input[i]]);
+//     }
+//     for(int i=0;i<len;i++){
+//         if(arr[input[i]] == maxFreq){
+//             return input[i];
+            
+//         }
+//     }
